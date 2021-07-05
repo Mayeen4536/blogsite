@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-wrap w-full mb-20">
+          <div class="lg:w-1/2 w-full mb-6 lg:mb-0 ">
+            <h1
+              class="
+                sm:text-3xl
+                text-2xl
+                font-medium
+                title-font
+                mb-2
+                text-gray-900
+              "
+            >
+              CHECK OUT RECENT POSTS
+            </h1>
+            <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+          </div>
+          
+        </div>
+        <div class="flex flex-wrap -m-4">
+        {% for post in posts reversed %}
+        
+          <div class="xl:w-1/4 md:w-1/2 p-4">
+          <a href='/post/{{post.id}}'>
+            <div class="bg-gray-100 p-6 rounded-lg hover:bg-gray-300 hover:text-black">
+              <img
+                class="h-40 rounded w-full object-cover object-center mb-6"
+                src="https://source.unsplash.com/1200x200/?{{post.pic}}"
+                alt="content"
+              />
+              <h3
+                class="
+                  tracking-widest
+                  text-indigo-500 text-xs
+                  font-medium
+                  title-font
+                "
+              >
+                {{post.created_at}}
+              </h3>
+              <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
+                {{post.title}}
+              </h2>
+              <p class="leading-relaxed text-base">
+                {{post.body|truncatewords:20}}
+              </p>
+            </div>
+            </a>
+          </div>
+          
+          {% endfor %}
+          
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
