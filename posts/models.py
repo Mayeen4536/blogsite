@@ -9,3 +9,4 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     body = models.CharField(max_length=1000000)
     pic = models.CharField(default = 'water', max_length=20)
+

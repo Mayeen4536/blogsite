@@ -8,29 +8,26 @@
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <title>Mayeen's blog</title>
+    <title>MyBlog</title>
+    
+    
   </head>
   <body>
     <section class="text-gray-600 body-font">
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap w-full mb-20 justify-self-auto">
           <div class="lg:w-full w-full mb-6 lg:mb-0 justify-self-auto">
-            <h1
-              class="
-                sm:text-3xl
-                text-2xl
-                font-medium
-                title-font
-                mb-2
-                text-gray-900
-                content-center
-                mx-auto
-                justify-self-auto
-              "
-            >
-              MAYEEN'S BLOG
+          {% if user.is_authenticated %}
+    
+            <h1 class="container text-center pt-10 title-font text-3xl">
+              {{user.username}}'s MyBlog
             </h1>
-            <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+            {% else %}
+            <h1 class="container text-center pt-10 title-font text-3xl">
+              Welcome to MyBLOG
+            </h1>
+    {% endif %}
+            
           </div>
           
         </div>

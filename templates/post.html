@@ -8,18 +8,20 @@
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <title>Mayeen's Blog</title>
+    <title>MyBlog</title>
   </head>
 
   <body>
     <div class="w-full mb-10 mt-10">
       <div class="lg:w-full w-full mb-6 lg:mb-0 mx-10">
-        <h1
-          class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900"
-        >
-          MAYEEN'S BLOG
+        {% if user.is_authenticated %}
+
+        <h1 class="container text-center pt-10 title-font text-3xl">
+          {{user.username}}'s MyBlog
         </h1>
-        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+        {% else %}
+        <h1 class="container text-center pt-10 title-font text-3xl">MyBLOG</h1>
+        {% endif %}
       </div>
     </div>
     <div class="xl:w-1/1 md:w-1/1 p-4">
