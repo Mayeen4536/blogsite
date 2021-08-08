@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.shortcuts import redirect, render
 
+from .forms import PostForm
 from .models import Post
 
 # Create your views here.
@@ -55,3 +56,15 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+def addPost(request):
+    form_class = PostForm()
+    if request.method == 'POST':
+        form_class = PostForm(request.POST)
+        if form_class.is_valid():
+            form_class.save()
+    context = {'form' : form_class}
+    
+    return render (request, 'addpost.html', context)
+
+
